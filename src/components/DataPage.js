@@ -11,8 +11,9 @@ import Drawer from "@mui/material/Drawer";
 import CreateDataPage from "./CreateDataPage";
 import { Box, Card, CardContent } from "@mui/material";
 import "./DataPage.css";
+import RegisterForm from "./RegisterForm";
 
-const DataPage = () => {
+const DataPage = ({createUser}=false) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { title, apiEndpoint } = location.state || {};
@@ -99,7 +100,7 @@ const DataPage = () => {
           className="button-container"
           style={{ marginLeft: "80%", justifyContent: "flex-end" }}
         >
-          <Button variant="contained" color="primary" onClick={openCreateDrawer}  
+          <Button variant="contained"  color="primary" onClick={openCreateDrawer}  
           style={{color: "#ffffff", margin: "10px 0", borderRadius: 4 }}>
             Create User
           </Button>
@@ -143,7 +144,7 @@ const DataPage = () => {
           <Typography variant="body1">Loading...</Typography>
         )}
         <Drawer anchor="right" open={isCreateDrawerOpen} onClose={closeCreateDrawer}>
-          <CreateDataPage onClose={closeCreateDrawer} />
+          { !createUser ? <CreateDataPage onClose={closeCreateDrawer} /> : <RegisterForm onClose={closeCreateDrawer} /> }
         </Drawer>
       </CardContent>
     </Card>

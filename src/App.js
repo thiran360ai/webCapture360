@@ -134,7 +134,7 @@ const App = () => {
                 <Route path="/plan-detail-view" element={<PlanDetailViewPage />} />
                 <Route path="/create" element={<CreateDataPage />} />
                 <Route path="/project-manager" element={<DataPage />} />
-                <Route path="/create-manager" element={<DataPage />} />
+                <Route path="/create-manager" element={<DataPage createUser={true} />} />
                 <Route path="/image-gallery" element={<ImageGalleryComponent />} />
                 <Route path="/image-view" element={<ImageViewPage />} />
                 <Route path="/create-plan" element={<CreatePlanDataPage />} />

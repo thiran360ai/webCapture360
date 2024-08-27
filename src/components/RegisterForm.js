@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Correct import for Bootstrap CSS
+import { Card, CardContent, Snackbar, TextField, Typography } from '@mui/material';
+import Button from "@mui/material/Button";
+import MuiAlert from "@mui/material/Alert";
+import { useNavigate } from 'react-router-dom';
 
-const RegisterForm = () => {
+
+const RegisterForm = ({onClose}) => {
   const [formData, setFormData] = useState({
     id: '',
     username: '',
@@ -13,6 +18,14 @@ const RegisterForm = () => {
     location: '',
     is_active: true
   });
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const [open, setOpen] = useState(false); 
+  const [loading,setLoading] = useState(false);
+
+  const handleCloseSnackbar = () =>{ 
+  setOpen(false);
+  }
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -23,7 +36,7 @@ const RegisterForm = () => {
     e.preventDefault();
 
     console.log('Submitting form data:', formData);
-
+    setLoading(true)
     try {
       const response = await fetch('https://b034-103-175-108-58.ngrok-free.app/building/create_user/', {
         method: 'POST',
@@ -38,126 +51,141 @@ const RegisterForm = () => {
         })
       });
 
-      if (!response.ok) {
+      if (!response.ok) { 
+        setLoading(false)
         const errorData = await response.json();
         console.error('Error response:', errorData);
+        setMessage("Failed to submit");
+        setOpen(true)
         throw new Error('Network response was not ok');
       }
 
       const data = await response.json();
       console.log('Registration successful:', data);
+      setMessage("Successfully submitted");
+      setOpen(true);
+      setLoading(false)
+      setTimeout(() => {
+        setOpen(false);
+        onClose();
+       setLoading(false)
+        navigate("/create-manager"); // Redirect after 3 seconds
+      }, 3000);
       // Handle successful registration (e.g., show success message, redirect, etc.)
     } catch (error) {
+      setMessage("Error during registration");
+      setOpen(true)
+      setLoading(false)
       console.error('Error during registration:', error);
       // Handle error (e.g., show error message to user)
     }
   };
+ 
+  return ( 
+  <Card style={{ maxWidth: 1000, margin: "auto", marginTop: 30 }}>
+  <CardContent style={{ width: '450px', boxShadow: "0 8px 16px rgba(0,0,0,0.2)", backgroundColor: '#efebe9', borderRadius: 8 }}>
+    <Typography variant="h6" gutterBottom style={{ marginBottom: 30, textAlign: "center", fontSize: '28px' }}>
+      <span style={{ textDecoration: 'underline', color: 'GrayText' }}>Create New User</span>
+    </Typography>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <TextField
+        name='id'
+        label="ID"
+        value={formData.id}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <TextField
+        name='username'
+        label="Username"
+        value={formData.username}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <TextField
+        name='first_name'
+        label="First Name"
+        value={formData.first_name}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <TextField
+        name='last_name'
+        label="Last Name"
+        value={formData.last_name}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <TextField
+        name='email'
+        label="Email"
+        value={formData.email}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <TextField
+        name='password'
+        label="Password"
+        type="password"
+        value={formData.password}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <TextField
+        name='location'
+        label="Location"
+        value={formData.location}
+        onChange={handleChange}
+        fullWidth
+        margin="normal"
+        required
+        style={{ backgroundColor: "#ffffff", borderRadius: 4 }}
+        size="small"
+      />
+      <Button 
+      disabled={loading || message === "Successfully submitted"}
+        type="submit"
+        variant="contained"
+        color="primary"
+        style={{ color: "#ffffff", margin: "10px 0", borderRadius: 4 }}
+        size="small"
+      >
+        Register
+      </Button>
+    </form>
+  </CardContent>
+  <Snackbar open={open} autoHideDuration={3000} onClose={handleCloseSnackbar} style={{ bottom: 50 }}>
+    <MuiAlert elevation={6} variant="filled"  severity={message === "Successfully submitted" ? "success" : "error"}>
+    {message}
+    </MuiAlert>
+  </Snackbar>
+</Card>
+ )
 
-  return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="id">ID:</label>
-          <input
-            type="text"
-            id="id"
-            name="id"
-            className="form-control"
-            value={formData.id}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="first_name">First Name:</label>
-          <input
-            type="text"
-            id="first_name"
-            name="first_name"
-            className="form-control"
-            value={formData.first_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="last_name">Last Name:</label>
-          <input
-            type="text"
-            id="last_name"
-            name="last_name"
-            className="form-control"
-            value={formData.last_name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className="form-control"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="form-control"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="location">Location:</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            className="form-control"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-check">
-          <input
-            type="checkbox"
-            id="is_active"
-            name="is_active"
-            className="form-check-input"
-            checked={formData.is_active}
-            onChange={handleChange}
-          />
-          <label htmlFor="is_active" className="form-check-label">
-            Active
-          </label>
-        </div>
-        <button type="submit" className="btn btn-primary mt-3">Register</button>
-      </form>
-    </div>
-  );
 };
 
 export default RegisterForm;

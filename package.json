@@ -2,6 +2,7 @@
   "name": "admin-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://thiran360ai.github.io/webCapture360",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -17,6 +18,7 @@
     "aframe-react": "^4.4.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "gh-pages": "^6.1.1",
     "http-proxy-middleware": "^3.0.0",
     "i": "^0.3.7",
     "react": "^18.3.1",
@@ -31,7 +33,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"    
   },
   "eslintConfig": {
     "extends": [

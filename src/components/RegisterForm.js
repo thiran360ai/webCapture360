@@ -82,8 +82,17 @@ const RegisterForm = ({onClose}) => {
   };
  
   return ( 
-  <Card style={{ maxWidth: 1000, margin: "auto", marginTop: 30 }}>
-  <CardContent style={{ width: '450px', boxShadow: "0 8px 16px rgba(0,0,0,0.2)", backgroundColor: '#efebe9', borderRadius: 8 }}>
+<Card style={{ maxWidth: 1000, margin: "auto", marginTop: 30, height: "100vh" }}>
+  <CardContent 
+    style={{ 
+      width: '450px', 
+      boxShadow: "0 8px 16px rgba(0,0,0,0.2)", 
+      backgroundColor: '#efebe9', 
+      borderRadius: 8, 
+      overflowY: "auto", 
+      maxHeight: "calc(100vh - 60px)" // Adjust height to fit within the card
+    }}
+  >
     <Typography variant="h6" gutterBottom style={{ marginBottom: 30, textAlign: "center", fontSize: '28px' }}>
       <span style={{ textDecoration: 'underline', color: 'GrayText' }}>Create New User</span>
     </Typography>
@@ -180,10 +189,11 @@ const RegisterForm = ({onClose}) => {
   </CardContent>
   <Snackbar open={open} autoHideDuration={3000} onClose={handleCloseSnackbar} style={{ bottom: 50 }}>
     <MuiAlert elevation={6} variant="filled"  severity={message === "Successfully submitted" ? "success" : "error"}>
-    {message}
+      {message}
     </MuiAlert>
   </Snackbar>
 </Card>
+
  )
 
 };

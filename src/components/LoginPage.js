@@ -14,7 +14,7 @@ const LoginPage = ({ onLoginSuccess }) => {
     setSuccess('');
     try {
       const response = await axios.post(
-        'https://b034-103-175-108-58.ngrok-free.app/building/login/',
+        'https://967d-103-175-108-234.ngrok-free.app/building/login/',
         {
           username,
           password,

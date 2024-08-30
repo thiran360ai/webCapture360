@@ -56,7 +56,7 @@ const ImageGalleryComponent = () => {
       }
 
       const response = await fetch(
-        `https://b034-103-175-108-58.ngrok-free.app/building/api/video-frames/plan/${id}/video/${frameId}/`,
+        `https://967d-103-175-108-234.ngrok-free.app/building/api/video-frames/plan/${id}/video/${frameId}/`,
         {
           headers: {
             Accept: "application/json",
@@ -77,11 +77,11 @@ const ImageGalleryComponent = () => {
         if (isRight) {
           setImagesRight(validImages);
           setCurrentIndexRight(0);
-          setImageUrlRight(validImages[0]?.image ? `https://b034-103-175-108-58.ngrok-free.app${validImages[0].image}` : "");
+          setImageUrlRight(validImages[0]?.image ? `https://967d-103-175-108-234.ngrok-free.app${validImages[0].image}` : "");
         } else {
           setImagesLeft(validImages);
           setCurrentIndexLeft(0);
-          setImageUrlLeft(validImages[0]?.image ? `https://b034-103-175-108-58.ngrok-free.app${validImages[0].image}` : "");
+          setImageUrlLeft(validImages[0]?.image ? `https://967d-103-175-108-234.ngrok-free.app${validImages[0].image}` : "");
         }
       } else {
         console.warn("Unexpected API response structure:", imageData);
@@ -96,7 +96,7 @@ const ImageGalleryComponent = () => {
   const fetchDates = async (id) => {
     try {
       const response = await fetch(
-        `https://b034-103-175-108-58.ngrok-free.app/building/api/video-frames/plan/${id}/`,
+        `https://967d-103-175-108-234.ngrok-free.app/building/api/video-frames/plan/${id}/`,
         {
           headers: {
             Accept: "application/json",
@@ -218,7 +218,7 @@ const ImageGalleryComponent = () => {
       );
     }
 
-    const url = `https://b034-103-175-108-58.ngrok-free.app${imageObj.image}`;
+    const url = `https://967d-103-175-108-234.ngrok-free.app${imageObj.image}`;
     const timestamp = imageObj.timestamp || "Unknown Date";
 
     return (

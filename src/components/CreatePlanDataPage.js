@@ -29,7 +29,7 @@ const CreatePlanDataPage = () => {
     formData.append("description", description);
 
     try {
-      const response = await fetch("https://b034-103-175-108-58.ngrok-free.app/building/plan_details/", {
+      const response = await fetch("https://967d-103-175-108-234.ngrok-free.app/building/plan_details/", {
         method: "POST",
         body: formData,
       });

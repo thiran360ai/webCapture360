@@ -17,6 +17,8 @@ import RegisterForm from "./components/RegisterForm"; // Import RegisterForm
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import "./App.css";
+import Navbar from "./components/Navbar";
+import StatisticsCard from "./components/StatisticsCard";
 
 const theme = createTheme({
   palette: {
@@ -50,7 +52,7 @@ const App = () => {
     const fetchProjectData = async () => {
       try {
         const response = await fetch(
-          "https://b034-103-175-108-58.ngrok-free.app/building/projectlist/",
+          "https://967d-103-175-108-234.ngrok-free.app/building/projectlist/",
           {
             headers: {
               Accept: "application/json",
@@ -70,7 +72,7 @@ const App = () => {
     const fetchEmployeeData = async () => {
       try {
         const response = await fetch(
-          "https://b034-103-175-108-58.ngrok-free.app/building/create_user/",
+          "https://967d-103-175-108-234.ngrok-free.app/building/create_user/",
           {
             headers: {
               Accept: "application/json",
@@ -100,10 +102,7 @@ const App = () => {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <div className="content">
               <div className="top-bar">
-                <div className="right-side">
-                  <input type="text" className="search-bar" placeholder="Search..." />
-                  <div className="profile">Profile</div>
-                </div>
+              <Navbar/>
               </div>
               <div className="button-container">
                 {/* <button className="btn btn-primary" onClick={handleNewUserClick}>New User</button> */}
@@ -112,20 +111,21 @@ const App = () => {
               <Routes>
                 <Route path="/" element={
                   <>
-                    <div className="card-container">
+                    {/* <div className="card-container"> */}
                       {/* <div className="card"> */}
-                        <CustomCard title="Total Project" count={totalProjects} />
+                        {/* <CustomCard title="Total Project" count={totalProjects} /> */}
                       {/* </div> */}
                       {/* <div className="card"> */}
-                        <CustomCard title="Live Project" count={liveProjects} />
+                        {/* <CustomCard title="Live Project" count={liveProjects} /> */}
                       {/* </div> */}
                       {/* <div className="card"> */}
-                        <CustomCard title="Total User" count={totalEmployees} />
+                        {/* <CustomCard title="Total User" count={totalEmployees} /> */}
                       {/* </div> */}
                       {/* <div className="card"> */}
-                        <CustomCard title="Live User" count={liveEmployees} />
+                        {/* <CustomCard title="Live User" count={liveEmployees} /> */}
                       {/* </div> */}
-                    </div>
+                    {/* </div> */}
+                    <StatisticsCard/>
                     <ProjectTable />
                   </>
                 } />

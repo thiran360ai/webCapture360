@@ -15,7 +15,7 @@ const ProjectTable = () => {
     const fetchProjectData = async () => {
       try {
         const response = await fetch(
-          "https://b034-103-175-108-58.ngrok-free.app/building/projectlist/",
+          "https://967d-103-175-108-234.ngrok-free.app/building/projectlist/",
           {
             headers: {
               Accept: "application/json",
@@ -35,7 +35,7 @@ const ProjectTable = () => {
 
   // Function to render image with click event
   const renderImage = (imageUrl, name) => {
-    const url = `https://b034-103-175-108-58.ngrok-free.app/${imageUrl}`;
+    const url = `https://967d-103-175-108-234.ngrok-free.app/${imageUrl}`;
     return (
       <img
         src={url}

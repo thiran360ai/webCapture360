@@ -1,0 +1,16 @@
+.navbar-toolbar{ 
+    display: flex;
+    width: 100%;
+    padding: 24px;
+    justify-content: space-between;
+    align-items: center;
+} 
+.navbar-icon{  
+    width: 2.8rem;
+} 
+.nav-input{
+    background-color: #ffffff;
+    border: 0.0625rem solid;
+    border-radius: 0.5rem;
+    border-color: #d2d6da;
+}

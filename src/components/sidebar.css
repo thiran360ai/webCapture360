@@ -1,3 +1,4 @@
+
 .sidebar-paper {
   background-color: #f8f9fa; /* Light theme background color */
   width: 250px; /* Width of the sidebar */
@@ -5,19 +6,24 @@
   height: 100%; /* Full height */
 }
 
-.sidebar-list {
-  padding: 0;
+.sidebar-list { 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .sidebar-list-item {
   padding: 15px 20px;
   transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-  color: rgb(46, 189, 194); /* Initial text color */
+  color: gray !important;   /* Initial text color */
 }
 
 .sidebar-list-item:hover {
-  background-color: hwb(209 4% 9% / 0.929); /* Hover background color */
-  color: #007bff; /* Hover font color */
+  /* background-color: hwb(209 4% 9% / 0.929); Hover background color */
+  border-radius: 10px !important;
+  color: gray !important;   /* Initial text color */
+
 }
 
 .sidebar-list-item a {
@@ -26,7 +32,8 @@
 }
 
 .sidebar-list-item a:hover {
-  color: #29a1ac; /* Link text color on hover */
+   color: gray ;   /* Initial text color */
+ /* Link text color on hover */
 }
 
 .sidebar-list-item-icon {
@@ -34,5 +41,12 @@
 }
 
 .sidebar-list-item:hover .sidebar-list-item-icon {
-  color: #007bff; /* Hover icon color */
+  color:rgba(74, 74, 228, 0.724); /* Hover icon color */
+}
+.sidebar-list-item.active-link { 
+  transition: all 0.2s !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: black !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 6px rgba(43, 42, 42, 0.112) !important;
 }

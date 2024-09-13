@@ -22,11 +22,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     drawer: {
       width: isOpen ? '240px' : '0',
       transition: 'width 0.3s ease',
-      height: '100%',
+      height: '35%',
       top: 0,
       padding:"20px 10px",
       position: 'fixed',
-      backgroundColor: '#f8f9fa',
+      backgroundColor: 'white',
       overflowX: 'hidden',
     },
     toggleButton: {
@@ -75,14 +75,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   return (
     <>
-      <div style={styles.toggleButtonWrapper}>
+       <div style={styles.toggleButtonWrapper}>
         <IconButton
           style={styles.toggleButton}
           onClick={toggleSidebar}
         >
           {isOpen ? <ArrowLeftIcon /> : <ArrowRightIcon />}
         </IconButton>
-      </div>
+      </div> 
       
       <Drawer
         variant="persistent"

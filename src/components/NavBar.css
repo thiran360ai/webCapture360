@@ -14,3 +14,7 @@
     border-radius: 0.5rem;
     border-color: #d2d6da;
 }
+.mobile-app-bar{ 
+    width: 300px; 
+    background-color: aquamarine;
+}

@@ -102,7 +102,7 @@ const App = () => {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <div className="content">
               <div className="top-bar">
-              <Navbar/>
+              <Navbar toggleSidebar={toggleSidebar}/>
               </div>
               <div className="button-container">
                 {/* <button className="btn btn-primary" onClick={handleNewUserClick}>New User</button> */}

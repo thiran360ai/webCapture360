@@ -56,6 +56,8 @@ const ImageGalleryComponent = () => {
     { x: 4, y: 4 },
     { x: 5, y: 5 },
   ];
+  const [jsonid, setJsonid] = useState();
+
 
   const fetchImages = async (id, date, isRight) => {
     try {
@@ -67,7 +69,7 @@ const ImageGalleryComponent = () => {
       }
 
       const response = await fetch(
-        `https://c432-59-97-51-97.ngrok-free.app/building/api/video-frames/plan/${id}/video/${frameId}/`,
+        `https://aa53-59-97-51-97.ngrok-free.app/building/api/video-frames/plan/${id}/video/${frameId}/`,
         {
           headers: {
             Accept: "application/json",
@@ -81,6 +83,7 @@ const ImageGalleryComponent = () => {
       }
 
       const imageData = await response.json();
+      setJsonid(imageData[0].json)
       if (Array.isArray(imageData)) {
         const validImages = imageData.filter(
           (image) => image && image.image
@@ -88,11 +91,11 @@ const ImageGalleryComponent = () => {
         if (isRight) {
           setImagesRight(validImages);
           setCurrentIndexRight(0);
-          setImageUrlRight(validImages[0]?.image ? `https://c432-59-97-51-97.ngrok-free.app/${validImages[0].image}` : "");
+          setImageUrlRight(validImages[0]?.image ? `https://aa53-59-97-51-97.ngrok-free.app/${validImages[0].image}` : "");
         } else {
           setImagesLeft(validImages);
           setCurrentIndexLeft(0);
-          setImageUrlLeft(validImages[0]?.image ? `https://c432-59-97-51-97.ngrok-free.app/${validImages[0].image}` : "");
+          setImageUrlLeft(validImages[0]?.image ? `https://aa53-59-97-51-97.ngrok-free.app/${validImages[0].image}` : "");
         }
       } else {
         console.warn("Unexpected API response structure:", imageData);
@@ -142,13 +145,11 @@ const ImageGalleryComponent = () => {
     <div style={{ height: "70vh", marginTop: "10px" }}>
       <VRScene imageUrl={imageUrlLeft} arrowDirection={arrowDirection} />
     </div>
-    {/* LineGraph Component Below VR */}
     <div style={{ marginTop: "20px", width: "100%" }}>
       <Typography variant="h6" style={{ marginBottom: "10px" }}>
         Graph Visualization
       </Typography>
     </div>
-    <LineGraph />
   </div>
 )}
 
@@ -159,7 +160,7 @@ const ImageGalleryComponent = () => {
   const fetchDates = async (id) => {
     try {
       const response = await fetch(
-        `https://c432-59-97-51-97.ngrok-free.app/building/api/video-frames/plan/${id}/`,
+        `https://aa53-59-97-51-97.ngrok-free.app/building/api/video-frames/plan/${id}/`,
         {
           headers: {
             Accept: "application/json",
@@ -280,7 +281,7 @@ const ImageGalleryComponent = () => {
       );
     }
 
-    const url = `https://c432-59-97-51-97.ngrok-free.app/${imageObj.image}`;
+    const url = `https://aa53-59-97-51-97.ngrok-free.app/${imageObj.image}`;
     const timestamp = imageObj.timestamp || "Unknown Date";
 
     return (
@@ -427,7 +428,14 @@ const ImageGalleryComponent = () => {
             
           </div>
         )}
-        <LineGraph/>
+        {jsonid && (
+  <LineGraph
+    id={jsonid}
+    setCurrentIndexLeft={setCurrentIndexLeft}
+    setCurrentIndexRight={setCurrentIndexRight}
+    maxFrames={Math.min(imagesLeft.length, imagesRight.length)}
+  />
+)}
       </div>
     </ThemeProvider>
   );  

@@ -10,7 +10,7 @@ const VidPage = () => {
     const fetchVideoDetails = async () => {
       try {
         const response = await fetch(
-          "https://c432-59-97-51-97.ngrok-free.app/building/api/video/details/",
+          "https://aa53-59-97-51-97.ngrok-free.app/building/api/video/details/",
           {
             headers: {
               Accept: "application/json",

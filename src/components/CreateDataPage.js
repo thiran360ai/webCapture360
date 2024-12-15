@@ -39,7 +39,7 @@ const CreateDataPage = ({ onClose }) => {
 
     try {
       const response = await fetch(
-        "https://c432-59-97-51-97.ngrok-free.app/building/create_project_list/",
+        "https://aa53-59-97-51-97.ngrok-free.app/building/create_project_list/",
         {
           method: "POST",
           body: formData,

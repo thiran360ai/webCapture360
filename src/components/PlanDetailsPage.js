@@ -50,13 +50,14 @@ const PlanDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { title, data } = location.state || {};
+  console.log("data", data)
 
   const handleViewPlan = (id) => {
     navigate("/image-gallery", { state: { id } });
   };
 
   const renderImage = (imageUrl) => {
-    const fullImageUrl = `https://c432-59-97-51-97.ngrok-free.app/${imageUrl}`;
+    const fullImageUrl = `https://aa53-59-97-51-97.ngrok-free.app/${imageUrl}`;
     return (
       <img
         src={fullImageUrl}
@@ -101,6 +102,7 @@ const PlanDetailsPage = () => {
               <TableBody>
                 {data.map((row, index) => (
                   <TableRow key={index}>
+                    
                     {Object.entries(row).map(([key, value], idx) => (
                       <TableCell
                         key={idx}

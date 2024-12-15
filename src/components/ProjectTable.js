@@ -20,7 +20,7 @@ const ProjectTable = () => {
     const fetchProjectData = async () => {
       try {
         const response = await fetch(
-          "https://c432-59-97-51-97.ngrok-free.app/building/projectlist/",
+          "https://aa53-59-97-51-97.ngrok-free.app/building/projectlist/",
           {
             headers: {
               Accept: "application/json",
@@ -117,7 +117,7 @@ const ProjectTable = () => {
             <CardMedia
               component="img"
               height="180"
-              image={`https://c432-59-97-51-97.ngrok-free.app/${project.image}`}
+              image={`https://aa53-59-97-51-97.ngrok-free.app/${project.image}`}
               alt={project.project}
               sx={{
                 borderTopLeftRadius: "16px",
@@ -127,7 +127,7 @@ const ProjectTable = () => {
               onClick={() =>
                 navigate("/image-view", {
                   state: {
-                    imageUrl: `https://c432-59-97-51-97.ngrok-free.app/${project.image}`,
+                    imageUrl: `https://aa53-59-97-51-97.ngrok-free.app/${project.image}`,
                     name: project.project,
                   },
                 })

@@ -9,7 +9,7 @@ const PlanDetailViewPage = () => {
   const { title, data } = location.state || {};
 
   const renderImage = (imageUrl, name) => {
-    const fullImageUrl = `https://c432-59-97-51-97.ngrok-free.app/${imageUrl}`;
+    const fullImageUrl = `https://aa53-59-97-51-97.ngrok-free.app/${imageUrl}`;
     return (
       <div key={name}>
         <img

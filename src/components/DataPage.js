@@ -47,7 +47,7 @@ const DataPage = ({ createUser } = false) => {
     }
 
     try {
-      const viewUrl = `https://c432-59-97-51-97.ngrok-free.app/building/plans/project/${row.project}/`;
+      const viewUrl = `https://aa53-59-97-51-97.ngrok-free.app/building/plans/project/${row.project}/`;
       const response = await fetch(viewUrl, {
         headers: {
           Accept: "application/json",
@@ -67,7 +67,7 @@ const DataPage = ({ createUser } = false) => {
   };
 
   const renderImage = (imageUrl, name) => {
-    const url = `https://c432-59-97-51-97.ngrok-free.app/${imageUrl}`;
+    const url = `https://aa53-59-97-51-97.ngrok-free.app/${imageUrl}`;
     return (
       <img
         src={url}

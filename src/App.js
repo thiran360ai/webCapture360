@@ -45,7 +45,7 @@ const App = () => {
     const fetchProjectData = async () => {
       try {
         const response = await fetch(
-          "https://c432-59-97-51-97.ngrok-free.app/building/projectlist/",
+          "https://aa53-59-97-51-97.ngrok-free.app/building/projectlist/",
           {
             headers: {
               Accept: "application/json",
@@ -64,7 +64,7 @@ const App = () => {
     const fetchEmployeeData = async () => {
       try {
         const response = await fetch(
-          "https://c432-59-97-51-97.ngrok-free.app/building/create_user/",
+          "https://aa53-59-97-51-97.ngrok-free.app/building/create_user/",
           {
             headers: {
               Accept: "application/json",

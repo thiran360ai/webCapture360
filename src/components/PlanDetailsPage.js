@@ -57,7 +57,7 @@ const PlanDetailsPage = () => {
   };
 
   const renderImage = (imageUrl) => {
-    const fullImageUrl = `https://aa53-59-97-51-97.ngrok-free.app/${imageUrl}`;
+    const fullImageUrl = `http://59.97.51.97:8081/${imageUrl}`;
     return (
       <img
         src={fullImageUrl}

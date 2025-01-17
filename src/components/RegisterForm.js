@@ -38,7 +38,7 @@ const RegisterForm = ({onClose}) => {
     console.log('Submitting form data:', formData);
     setLoading(true)
     try {
-      const response = await fetch('https://aa53-59-97-51-97.ngrok-free.app/building/create_user/', {
+      const response = await fetch('http://59.97.51.97:8081/building/create_user/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

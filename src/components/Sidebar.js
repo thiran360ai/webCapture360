@@ -76,13 +76,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       text: 'Project Manager',
       icon: <ProjectIcon />,
       link: '/project-manager',
-      apiEndpoint: 'https://aa53-59-97-51-97.ngrok-free.app/building/projectlist/',
+      apiEndpoint: 'http://59.97.51.97:8081/building/projectlist/',
     },
     {
       text: 'Create Manager',
       icon: <CreateIcon />,
       link: '/create-manager',
-      apiEndpoint: 'https://aa53-59-97-51-97.ngrok-free.app/building/create_user/',
+      apiEndpoint: 'http://59.97.51.97:8081/building/create_user/',
     },
   ];
 
